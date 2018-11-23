@@ -40,6 +40,15 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
     this.setPageTitle();
   }
 
+  submitForm() {
+    this.submittingForm = true;
+    if (this.currentAction === 'new') {
+      this.createCategory();
+    }  else {
+      this.updateCategory();
+    }
+  }
+
   // PRIVATE METHODS
 
   private setCurrentAction() {
@@ -84,4 +93,48 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
 
     }
   }
+
+  private createCategory() {
+    const category: Category = Object.assign(new Category(), this.categoryForm.value);
+    this.categoryService.create(category)
+      .subscribe(
+        category => this.actionsForSucess(category),
+        error => this.actionsForError(error)
+    );
+  }
+
+  private updateCategory() {
+    const category: Category = Object.assign(new Category(), this.categoryForm.value);
+
+    this.categoryService.update(category)
+      .subscribe(
+      category => this.actionsForSucess(category),
+      error => this.actionsForError(error)
+    );
+  }
+
+  private actionsForSucess(category: Category) {
+    toastr.success('Solicitação processada com sucesso!');
+
+    // redirect/reload component page
+    this.router.navigateByUrl('categories', {skipLocationChange: true}).then(
+      () => this.router.navigate(['categories', category.id, 'edit'])
+    );
+
+    // skipLocationChange nao gravar no historico de navegacao nao funciona o voltar do navegador
+
+  }
+
+  private actionsForError(error) {
+    toastr.error('Ocorreu um erro ao processar a sua solicitação!');
+
+    this.submittingForm = false;
+
+    if (error.status === 422) {
+      this.serverErrorMensages = JSON.parse(error._body).errors;
+    } else {
+      this.serverErrorMensages = ['Falha na comunicação com o servidor. Por favor teste mais tarde.'];
+    }
+  }
+
 }
