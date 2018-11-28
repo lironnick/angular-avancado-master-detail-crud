@@ -13,7 +13,7 @@ export class InMemoryDatabase implements InMemoryDbService {
       { id: 5, name: 'Freelas', description: 'Trabalhos com freelancer' }
     ];
 
-    const entries: Entry[] = [
+   const entries: Entry[] = [
       { id: 1,
         name: 'Gás de cozinha',
         description: 'Qualquer coisa 1',
