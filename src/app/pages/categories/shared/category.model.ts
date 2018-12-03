@@ -9,4 +9,8 @@ export class Category extends BaseResourceModel {
    super();
  }
 
+  static formJson(jsonData: any): Category {
+    return Object.assign(new Category(), jsonData);
+  }
+
 }
