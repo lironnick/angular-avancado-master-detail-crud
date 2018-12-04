@@ -65,7 +65,6 @@ export abstract class BaseResourceFormComponent < T extends BaseResourceModel> i
 
   }
 
-
   protected loadResource() {
     if (this.currentAction === 'edit') {
       this.route.paramMap.pipe(
