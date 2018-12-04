@@ -23,4 +23,5 @@ export class BreadCrumbComponent implements OnInit {
     const index = this.items.indexOf(item);
     return index + 1 == this.items.length;
   }
+
 }
