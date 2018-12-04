@@ -10,13 +10,6 @@ import { switchMap } from 'rxjs/operators';
 import toastr from 'toastr';
 
 
-
-@Component({
-  selector: 'app-category-form',
-  templateUrl: './category-form.component.html',
-  styleUrls: ['./category-form.component.css']
-})
-
 export abstract class BaseResourceFormComponent < T extends BaseResourceModel> implements OnInit, AfterContentChecked {
 
   currentAction: string;
@@ -33,7 +26,7 @@ export abstract class BaseResourceFormComponent < T extends BaseResourceModel> i
   constructor(
     protected injector: Injector,
     public resource: T,
-    protected ResourceService: BaseResourceService<T>,
+    protected resourceService: BaseResourceService<T>,
     protected jsonDataResourceFn: (jsonData) => T
   ) {
     this.route = this.injector.get(ActivatedRoute);
@@ -72,13 +65,6 @@ export abstract class BaseResourceFormComponent < T extends BaseResourceModel> i
 
   }
 
-  // protected buildResourceForm() {
-  //   this.categoryForm = this.formBuilder.group({
-  //     id: [null],
-  //     name: [null, [Validators.required, Validators.minLength(2)]],
-  //     description: [null]
-  //   });
-  // }
 
   protected loadResource() {
     if (this.currentAction === 'edit') {

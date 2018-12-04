@@ -1,7 +1,7 @@
 <nav class="mb-5">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-    <li class="breadcrumb-item"><a routerLink="/">Categorias</a></li>
+    <li class="breadcrumb-item"><a routerLink="/categories">Categorias</a></li>
     <li class="breadcrumb-item active">{{ pageTitle }}</li>
   </ol>
 </nav>
@@ -21,7 +21,7 @@
 </div>
 
 
-<form [formGroup]="categoryForm" (submit)="submitForm()">
+<form [formGroup]="resourceForm" (submit)="submitForm()">
 
   <div class="card">
 
@@ -36,9 +36,9 @@
           <label for="name">Nome</label>
           <input type="text" class="form-control" id="name" formControlName="name">
 
-          <div class="text-danger" *ngIf="categoryForm.get('name').invalid && categoryForm.get('name').touched">
-            <div *ngIf="categoryForm.get('name').errors.required"></div>
-            <div *ngIf="categoryForm.get('name').errors.minlength"></div>
+          <div class="text-danger" *ngIf="resourceForm.get('name').invalid && resourceForm.get('name').touched">
+            <div *ngIf="resourceForm.get('name').errors.required"></div>
+            <div *ngIf="resourceForm.get('name').errors.minlength"></div>
           </div>
 
         </div>
@@ -62,7 +62,7 @@
     </ul>
   </div>
 
-  <button [disabled]="submittingForm || categoryForm.invalid" type="submit" class="btn btn-primary btn-lg float-right mt-3">
+  <button [disabled]="submittingForm || resourceForm.invalid" type="submit" class="btn btn-primary btn-lg float-right mt-3">
     Salvar
   </button>
 
