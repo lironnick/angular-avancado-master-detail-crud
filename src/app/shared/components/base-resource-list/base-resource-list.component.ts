@@ -2,9 +2,7 @@ import { OnInit } from '@angular/core';
 import {BaseResourceModel} from '../../models/base-resource.model';
 import {BaseResourceService} from '../../services/base-resource.service';
 
-
-
-export class BaseResourceListComponent<T extends BaseResourceModel> implements OnInit {
+export abstract class BaseResourceListComponent<T extends BaseResourceModel> implements OnInit {
 
   resources: T[] = [];
 
