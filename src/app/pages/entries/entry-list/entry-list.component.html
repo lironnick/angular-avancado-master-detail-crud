@@ -33,7 +33,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let entry of entries">
+    <tr *ngFor="let entry of resources">
       <td>
         <strong>{{ entry.name }}</strong><br>
         <small class="text-success">{{ entry.date }}</small>
@@ -41,8 +41,6 @@
       </td>
       <td>
         {{ entry.category.name }}
-        -
-        <pre>{{ entry | json}}</pre>
       </td>
       <td class="text-right">
         <strong [class.text-success]="entry.type == 'revenue'" [class.text-danger]="entry.type == 'expense'">
