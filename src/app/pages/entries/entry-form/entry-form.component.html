@@ -31,9 +31,9 @@
           </select>
 
 
-          <div class="text-danger" *ngIf="resourceForm.get('type').invalid && resourceForm.get('type').touched">
-            <div *ngIf="resourceForm.get('type').errors.required"></div>
-          </div>
+          <app-form-field-error
+            [form-control]="resourceForm.get('type')"
+          ></app-form-field-error>
 
         </div>
 
@@ -42,11 +42,11 @@
           <label for="name">Lançamento</label>
           <input type="text" class="form-control" id="name" formControlName="name">
 
-          <div class="text-danger" *ngIf="resourceForm.get('name').invalid && resourceForm.get('name').touched">
-            <div *ngIf="resourceForm.get('name').errors.required"></div>
-            <div *ngIf="resourceForm.get('name').errors.minlength"></div>
-          </div>
+          <app-form-field-error
+            [form-control]="resourceForm.get('name')"
+          ></app-form-field-error>
 
+          <!--<pre>{{ resourceForm.get('name').errors.minlength.requiredLength | json }}</pre>-->
         </div>
 
 
@@ -62,9 +62,10 @@
             <input [imask]="imaskConfig" type="text" class="form-control text-right" id="amount" formControlName="amount">
           </div>
 
-          <div class="text-danger" *ngIf="resourceForm.get('amount').invalid && resourceForm.get('amount').touched">
-            <div *ngIf="resourceForm.get('amount').errors.required"></div>
-          </div>
+          <app-form-field-error
+            [form-control]="resourceForm.get('amount')"
+          ></app-form-field-error>
+
 
         </div>
 
@@ -103,9 +104,11 @@
             <label (click)="resourceForm.get('paid').setValue(false)" [class.active]="resourceForm.get('paid').value == false" class="btn btn-outline-info">Pendente</label>
           </div>
 
-          <div class="text-danger" *ngIf="resourceForm.get('paid').invalid && resourceForm.get('paid').touched">
-            <div *ngIf="resourceForm.get('paid').errors.required"></div>
-          </div>
+
+          <app-form-field-error
+            [form-control]="resourceForm.get('paid')"
+          ></app-form-field-error>
+
 
         </div>
 
@@ -118,9 +121,10 @@
           </select>
 
 
-          <div class="text-danger" *ngIf="resourceForm.get('categoryId').invalid && resourceForm.get('categoryId').touched">
-            <div *ngIf="resourceForm.get('categoryId').errors.required"></div>
-          </div>
+          <app-form-field-error
+            [form-control]="resourceForm.get('categoryId')"
+          ></app-form-field-error>
+
 
         </div>
 
